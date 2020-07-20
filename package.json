@@ -1,5 +1,6 @@
 {
   "private": true,
+  "version": "0.1",
   "name": "react-pdf-highlighter-monorepo",
   "scripts": {
     "postinstall": "npm run bootstrap",
