@@ -178,13 +178,22 @@ class PdfHighlighter extends PureComponent {
     });
   }
 
+  componentDidMount() {
+    this.init();
+  }
+
   componentDidUpdate(prevProps) {
+    if (prevProps.pdfDocument !== this.props.pdfDocument) {
+      this.init();
+      return;
+    }
+
     if (prevProps.highlights !== this.props.highlights) {
       this.renderHighlights(this.props);
     }
   }
 
-  componentDidMount() {
+  init() {
     const {
       pdfDocument
     } = this.props;
