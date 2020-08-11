@@ -35,18 +35,19 @@ class PdfLoader extends Component<Props, State> {
 
   load() {
     const { url, onError } = this.props;
-    this.setState({ pdfDocument: null });
+    this.setState({ pdfDocument: url });
 
-    if (url) {
-      pdfjs
-        .getDocument({ url: url, eventBusDispatchToDOM: true })
-        .promise.then(pdfDocument => {
-          this.setState({
-            pdfDocument: pdfDocument
-          });
-        })
-        .catch(onError);
-    }
+
+    //if (url) {
+    //  pdfjs
+    //    .getDocument({ url: url, eventBusDispatchToDOM: true })
+    //    .promise.then(pdfDocument => {
+    //      this.setState({
+    //        pdfDocument: pdfDocument
+    //      });
+    //    })
+    //    .catch(onError);
+    //}
   }
 
   render() {
