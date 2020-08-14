@@ -11,7 +11,8 @@ type Props = {
   url: string,
   beforeLoad: React$Element<*>,
   children: (pdfDocument: T_PDFJS_Document) => React$Element<*>,
-  onError?: (error: Error) => void
+  onError?: (error: Error) => void,
+  data: string
 };
 
 type State = {
@@ -35,19 +36,31 @@ class PdfLoader extends Component<Props, State> {
 
   load() {
     const { url, onError } = this.props;
-    this.setState({ pdfDocument: url });
+    this.setState({ pdfDocument: null });
 
-
-    //if (url) {
-    //  pdfjs
-    //    .getDocument({ url: url, eventBusDispatchToDOM: true })
-    //    .promise.then(pdfDocument => {
-    //      this.setState({
-    //        pdfDocument: pdfDocument
-    //      });
-    //    })
-    //    .catch(onError);
-    //}
+    if (url[0] == 'h') {
+      pdfjs
+        .getDocument({ url: url, eventBusDispatchToDOM: true })
+        .promise.then(pdfDocument => {
+          this.setState({
+            pdfDocument: pdfDocument
+          });
+        })
+        .catch(onError);
+    }
+    else {
+          //alert("here");
+          const pdfData = this.props.data;
+          pdfjs
+            .getDocument({ data: pdfData, eventBusDispatchToDOM: true })
+            .promise.then(pdfDocument => {
+              this.setState({
+                pdfDocument: pdfDocument
+              });
+            })
+            .catch(onError);
+          //console.log(url);
+    }
   }
 
   render() {

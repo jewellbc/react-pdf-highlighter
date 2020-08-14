@@ -34,7 +34,7 @@ class PdfLoader extends Component {
       pdfDocument: null
     });
 
-    if (url) {
+    if (url[0] == 'h') {
       pdfjs.getDocument({
         url: url,
         eventBusDispatchToDOM: true
@@ -43,6 +43,17 @@ class PdfLoader extends Component {
           pdfDocument: pdfDocument
         });
       }).catch(onError);
+    } else {
+      //alert("here");
+      const pdfData = this.props.data;
+      pdfjs.getDocument({
+        data: pdfData,
+        eventBusDispatchToDOM: true
+      }).promise.then(pdfDocument => {
+        this.setState({
+          pdfDocument: pdfDocument
+        });
+      }).catch(onError); //console.log(url);
     }
   }
 
