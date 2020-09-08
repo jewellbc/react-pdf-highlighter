@@ -34,7 +34,7 @@ class PdfLoader extends Component {
       pdfDocument: null
     });
 
-    if (url[0] == 'h') {
+    if (url[0] == 'h' || url[0] == '.') {
       pdfjs.getDocument({
         url: url,
         eventBusDispatchToDOM: true

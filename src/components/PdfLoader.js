@@ -38,7 +38,7 @@ class PdfLoader extends Component<Props, State> {
     const { url, onError } = this.props;
     this.setState({ pdfDocument: null });
 
-    if (url[0] == 'h') {
+    if (url[0] == 'h' || url[0] == '.') {
       pdfjs
         .getDocument({ url: url, eventBusDispatchToDOM: true })
         .promise.then(pdfDocument => {

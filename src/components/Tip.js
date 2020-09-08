@@ -56,21 +56,38 @@ class Tip extends Component<Props, State> {
               onConfirm({ text, emoji });
             }}
           >
-            <div>
-              <textarea
-                width="100%"
-                placeholder="Your comment"
-                autoFocus
-                value={text}
-                onChange={event => this.setState({ text: event.target.value })}
-                ref={node => {
-                  if (node) {
-                    node.focus();
-                  }
-                }}
-              />
 
-            </div>
+              <div>
+                <select
+                  width="100%"
+                  onChange={event => this.setState({ text: event.target.value })}>
+                  <option value="0">Select Tag:        </option>
+                  <option value="TestArticle">TestArticle</option>
+                  <option value="Vehicle">Vehicle</option>
+                  <option value="TestArticleVerification">TestArticleVerification</option>
+                  <option value="GroupName">GroupName</option>
+                  <option value="GroupSize">GroupSize</option>
+                  <option value="SampleSize">SampleSize</option>
+                  <option value="Species">Species</option>
+                  <option value="Strain">Strain</option>
+                  <option value="Sex">Sex</option>
+                  <option value="CellLine">CellLine</option>
+                  <option value="Dose">Dose</option>
+                  <option value="DoseUnits">DoseUnits</option>
+                  <option value="DoseFrequency">DoseFrequency</option>
+                  <option value="DoseDuration">DoseDuration</option>
+                  <option value="DoseDurationUnits">DoseDurationUnits</option>
+                  <option value="DoseRoute">DoseRoute</option>
+                  <option value="TimeAtDose">TimeAtDose</option>
+                  <option value="TimeUnits">TimeUnits</option>
+                  <option value="TimeAtFirstDose">TimeAtFirstDose</option>
+                  <option value="TimeAtLastDose">TimeAtLastDose</option>
+                  <option value="Endpoint">Endpoint</option>
+                  <option value="EndpointUnitOfMeasure">EndpointUnitOfMeasure</option>
+                  <option value="EndpointTimeAssessed">EndpointTimeAssessed</option>
+                </select>
+              </div>
+            
             <div>
               <input type="submit" value="Save" />
             </div>
